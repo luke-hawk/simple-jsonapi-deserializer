@@ -1,0 +1,5 @@
+require 'simple_jsonapi_deserializer/includes'
+require 'simple_jsonapi_deserializer/includes_cache'
+require 'simple_jsonapi_deserializer/parse_error'
+require 'simple_jsonapi_deserializer/resource'
+require 'simple_jsonapi_deserializer/version'

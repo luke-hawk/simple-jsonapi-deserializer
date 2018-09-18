@@ -1,4 +1,3 @@
 require 'rspec'
-require 'simple/jsonapi/deserializer/version'
-
-include Simple::Jsonapi::Deserializer
+require 'rspec_snapshot_matcher'
+require 'simple_jsonapi_deserializer'

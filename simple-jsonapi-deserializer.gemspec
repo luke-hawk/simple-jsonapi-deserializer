@@ -2,17 +2,17 @@
 
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'simple/jsonapi/deserializer/version'
+require 'simple_jsonapi_deserializer/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "simple-jsonapi-deserializer"
-  gem.version       = Simple::Jsonapi::Deserializer::VERSION
-  gem.summary       = %q{TODO: Summary}
-  gem.description   = %q{TODO: Description}
-  gem.license       = "MIT"
-  gem.authors       = ["Gerrit Seger"]
-  gem.email         = "gseger@compeon.de"
-  gem.homepage      = "https://rubygems.org/gems/simple-jsonapi-deserializer"
+  gem.name          = 'simple-jsonapi-deserializer'
+  gem.version       = SimpleJSONAPIDeserializer::VERSION
+  gem.summary       = ''
+  gem.description   = ''
+  gem.license       = 'MIT'
+  gem.authors       = ['Gerrit Seger']
+  gem.email         = 'gerrit.seger@gmail.com'
+  gem.homepage      = 'https://rubygems.org/gems/simple-jsonapi-deserializer'
 
   gem.files         = `git ls-files`.split($/)
 
@@ -33,5 +33,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rake', '~> 10.0'
   gem.add_development_dependency 'rdoc', '~> 4.0'
   gem.add_development_dependency 'rspec', '~> 3.0'
+  gem.add_development_dependency 'rspec_snapshot_matcher', '~> 0.1.0'
   gem.add_development_dependency 'rubygems-tasks', '~> 0.2'
 end
