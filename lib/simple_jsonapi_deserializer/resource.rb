@@ -1,14 +1,15 @@
 module SimpleJSONAPIDeserializer
   class Resource
-    def self.deserialize(resource = {})
+    def self.deserialize(resource)
       data = resource['data'] || {}
-      includes = resource['include'] || []
+      includes = Includes.new(resource['include'] || [])
+      cache = Cache.new
 
-      new(
-        data,
-        Includes.new(includes),
-        Cache.new
-      ).deserialize
+      if data.is_a?(Array)
+        data.map { |res| new(res, includes, cache).deserialize(without_attributes: true) }
+      else
+        new(data, includes, cache).deserialize
+      end
     rescue NoMethodError => e
       raise ParseError, e
     end
@@ -19,9 +20,9 @@ module SimpleJSONAPIDeserializer
       @cache = cache
     end
 
-    def deserialize(without_relationships: false)
+    def deserialize(without_attributes: false, without_relationships: false)
       {}.tap do |deserialized_resource|
-        deserialized_resource.merge!(attributes)
+        deserialized_resource.merge!(attributes) unless without_attributes
         deserialized_resource.merge!(deserialized_relationships) unless without_relationships
         deserialized_resource['type'] = type if type
         deserialized_resource['id'] = id if id

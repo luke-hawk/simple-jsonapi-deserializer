@@ -87,6 +87,46 @@ describe SimpleJSONAPIDeserializer::Resource do
       it { is_expected.to eq(expected_result) }
     end
 
+    # An array is not allowed as a root level resource, but it can be used to
+    # update relationships. In this case attributes will be ignored.
+    # http://jsonapi.org/format/#crud-updating-relationships
+    context 'with an array of resources' do
+      let(:json_hash) do
+        {
+          'data' => [
+            {
+              'id' => '123',
+              'type' => 'mice',
+              'attributes' => {
+                'name' => 'Vinnie'
+              }
+            },
+            {
+              'id' => '124',
+              'type' => 'mice',
+              'attributes' => {
+                'name' => 'Rico'
+              }
+            }
+          ]
+        }
+      end
+      let(:expected_result) do
+        [
+          {
+            'id' => '123',
+            'type' => 'mice'
+          },
+          {
+            'id' => '124',
+            'type' => 'mice'
+          }
+        ]
+      end
+
+      it { is_expected.to eq(expected_result) }
+    end
+
     describe 'relationships' do
       context 'with a single relationship' do
         let(:json_hash) do

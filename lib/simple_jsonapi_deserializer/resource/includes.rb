@@ -1,6 +1,6 @@
 module SimpleJSONAPIDeserializer
   class Resource::Includes
-    def initialize(includes = [])
+    def initialize(includes)
       @includes = includes
     end
 
