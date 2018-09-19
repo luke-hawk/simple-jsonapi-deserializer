@@ -10,7 +10,7 @@ module SimpleJSONAPIDeserializer
       else
         new(data, includes, cache).deserialize
       end
-    rescue NoMethodError => e
+    rescue TypeError, NoMethodError => e
       raise ParseError, e
     end
 

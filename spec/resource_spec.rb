@@ -13,10 +13,20 @@ describe SimpleJSONAPIDeserializer::Resource do
     end
 
     context 'with an invalid resource' do
-      let(:json_hash) { {} }
-      let(:expected_result) { {} }
+      let(:json_hash) do
+        {
+          'data' => {
+            'relationships' => {
+              'test' => { }
+            }
+          },
+          'include' => 5
+        }
+      end
 
-      it { is_expected.to eq(expected_result) }
+      it 'raises a custom error' do
+        expect { subject }.to raise_error(SimpleJSONAPIDeserializer::ParseError)
+      end
     end
 
     context 'with a resource' do
@@ -588,7 +598,6 @@ describe SimpleJSONAPIDeserializer::Resource do
       end
     end
 
-
     context 'with cyclic relationships' do
       let(:json_hash) do
         {
@@ -757,7 +766,7 @@ describe SimpleJSONAPIDeserializer::Resource do
               'characters' => [
                 {
                   'id' => '123',
-                  'type'=>'mice'
+                  'type' => 'mice'
                 },
                 {
                   'id' => '9',
