@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe SimpleJSONAPIDeserializer::Resource do
+describe SimpleJSONAPIDeserializer::Deserializer do
   describe '.deserialize' do
-    subject { SimpleJSONAPIDeserializer::Resource.deserialize(json_hash) }
+    subject { SimpleJSONAPIDeserializer::Deserializer.new(json_hash).deserialize }
 
     context 'with an invalid parameter' do
       let(:json_hash) { nil }
@@ -17,7 +17,7 @@ describe SimpleJSONAPIDeserializer::Resource do
         {
           'data' => {
             'relationships' => {
-              'test' => { }
+              'test' => {}
             }
           },
           'include' => 5

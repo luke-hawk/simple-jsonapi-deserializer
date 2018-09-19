@@ -1,19 +1,5 @@
 module SimpleJSONAPIDeserializer
   class Resource
-    def self.deserialize(resource)
-      data = resource['data'] || {}
-      includes = Includes.new(resource['include'] || [])
-      cache = Cache.new
-
-      if data.is_a?(Array)
-        data.map { |res| new(res, includes, cache).deserialize(without_attributes: true) }
-      else
-        new(data, includes, cache).deserialize
-      end
-    rescue TypeError, NoMethodError => e
-      raise ParseError, e
-    end
-
     def initialize(resource, includes, cache)
       @resource = resource
       @includes = includes
