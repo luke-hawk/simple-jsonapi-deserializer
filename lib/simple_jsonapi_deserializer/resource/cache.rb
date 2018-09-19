@@ -1,6 +1,6 @@
 module SimpleJSONAPIDeserializer
-  class IncludesCache
-    def initialize()
+  class Resource::Cache
+    def initialize
       @cached_resources = {}
     end
 
@@ -13,7 +13,7 @@ module SimpleJSONAPIDeserializer
       cached_resource(id, type)
     end
 
-    def cached_resource(id, type)
+    def find(id, type)
       cached_resources.dig(type, id)
     end
 
