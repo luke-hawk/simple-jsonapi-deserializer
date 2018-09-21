@@ -1,27 +1,82 @@
 # simple-jsonapi-deserializer
 
-* [Homepage](https://rubygems.org/gems/simple-jsonapi-deserializer)
-* [Documentation](http://rubydoc.info/gems/simple-jsonapi-deserializer/frames)
-* [Email](mailto:gseger at compeon.de)
+Painless, zero config JSON API deserialization.
 
-## Description
+## Installation
 
-TODO: Description
+Add to you application's Gemfile
 
-## Features
+```ruby
+gem 'simple-jsonapi-deserializer'
+```
+
+and install
+
+```sh
+$ bundle
+```
+
+or install it directly
+
+```shell
+$ gem install 'simple-jsonapi-deserializer'
+```
+
+## Usage
+
+```ruby
+SimpleJSONAPIDeserializer.deserialize(json_api_hash)
+```
 
 ## Examples
 
-    require 'simple/jsonapi/deserializer'
+```ruby
+json_api_hash = {
+  'data' => {
+    'id' => '1234',
+    'type' => 'planets',
+    'attributes' => {
+      'name' => 'Earth'
+    },
+    'relationships' => {
+      'satellites' => {
+        'data' => [
+          {
+            'id' => '914',
+            'type' => 'satellites'
+          }
+        ]
+      }
+    }
+  },
+  'include' => [
+    {
+      'id' => '914',
+      'type' => 'satellites',
+      'attributes' => {
+        'name' => 'Moon'
+      }
+    }
+  ]
+}
 
-## Requirements
+SimpleJSONAPIDeserializer.deserialize(json_api_hash)
 
-## Install
+# =>
+# {
+#   "id" => "1234",
+#   "type" => "planets",
+#   "name" => "Earth",
+#   "satellites" => [
+#     {
+#       "id" => "914",
+#       "type" => "satellites",
+#       "name" => "Moon"
+#     }
+#   ]
+# }
+```
 
-    $ gem install simple-jsonapi-deserializer
+## License
 
-## Copyright
-
-Copyright (c) 2018 Gerrit Seger
-
-See LICENSE.txt for details.
+MIT
