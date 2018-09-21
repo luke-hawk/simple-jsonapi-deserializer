@@ -5,8 +5,8 @@ require 'simple_jsonapi_deserializer/version'
 Gem::Specification.new do |gem|
   gem.name          = 'simple-jsonapi-deserializer'
   gem.version       = SimpleJSONAPIDeserializer::VERSION
-  gem.summary       = 'Straight forward, zero config deserialization of JSON API resources.'
-  gem.description   = 'Straight forward, zero config deserialization of JSON API resources.'
+  gem.summary       = 'JSON API resource deserialization.'
+  gem.description   = 'Straight forward, painless, zero config deserialization of JSON API resources.'
   gem.license       = 'MIT'
   gem.authors       = ['Gerrit Seger']
   gem.email         = 'gerrit.seger@gmail.com'
@@ -27,7 +27,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ['lib']
 
-  gem.add_development_dependency 'rspec', '~> 0.52.0'
+  gem.add_development_dependency 'rspec', '~> 3.8.0', '>= 3.0.0'
   gem.add_development_dependency 'rspec_snapshot_matcher', '~> 0.1.0'
-  gem.add_development_dependency 'rubocop'
+  gem.add_development_dependency 'rubocop', '~> 0.52.0'
 end
