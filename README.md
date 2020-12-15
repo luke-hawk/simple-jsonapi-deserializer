@@ -49,7 +49,7 @@ json_api_hash = {
       }
     }
   },
-  'include' => [
+  'included' => [
     {
       'id' => '914',
       'type' => 'satellites',
