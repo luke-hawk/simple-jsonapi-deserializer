@@ -295,7 +295,7 @@ describe SimpleJSONAPIDeserializer::Deserializer do
                 }
               }
             },
-            'include' => [
+            'included' => [
               {
                 'id' => '5',
                 'type' => 'bikes',
@@ -346,7 +346,7 @@ describe SimpleJSONAPIDeserializer::Deserializer do
                 }
               }
             },
-            'include' => [
+            'included' => [
               {
                 'id' => '5',
                 'type' => 'bikes',
@@ -417,7 +417,7 @@ describe SimpleJSONAPIDeserializer::Deserializer do
                 }
               }
             },
-            'include' => [
+            'included' => [
               {
                 'id' => '5',
                 'type' => 'bikes',
@@ -504,7 +504,7 @@ describe SimpleJSONAPIDeserializer::Deserializer do
                 }
               }
             },
-            'include' => [
+            'included' => [
               {
                 'id' => '5',
                 'type' => 'bikes',
@@ -636,7 +636,7 @@ describe SimpleJSONAPIDeserializer::Deserializer do
               }
             }
           },
-          'include' => [
+          'included' => [
             {
               'id' => '5',
               'type' => 'bikes',

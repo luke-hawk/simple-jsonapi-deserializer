@@ -29,7 +29,7 @@ module SimpleJSONAPIDeserializer
     end
 
     def includes
-      Resource::Includes.new(resource['include'] || [])
+      Resource::Includes.new(resource['included'] || [])
     end
   end
 end
